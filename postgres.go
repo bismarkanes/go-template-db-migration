@@ -32,12 +32,13 @@ import (
 )
 
 type postgresMigration struct {
-	dbHost     string
-	dbUsername string
-	dbPassword string
-	dbName     string
-	dbPort     string
+	dbHost     string `validate:"required,hostname"`
+	dbUsername string `validate:"required"`
+	dbPassword string `validate:"required"`
+	dbName     string `validate:"required"`
+	dbPort     string `validate:"required,hostname_port"`
 	useSSL     bool
+	sqlPath    string
 }
 
 // NewPostgresMigration use this to initialize migration if you are using postgresql database
